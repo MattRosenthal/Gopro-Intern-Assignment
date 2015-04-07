@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -7,10 +8,13 @@ public class ConstitutionReader {
 	public static void main(String args[]) {
 		int line = 0;
 		int word = 0; 
-		int charbyte = 0;
+		long charbyte = 0;
 		
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("constitution.txt"));
+			File file = new File("constitution.txt");
+			charbyte = file.length();
+			
+			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String currline = null;
 			while ((currline = reader.readLine()) != null) {
 				line++;
@@ -21,9 +25,6 @@ public class ConstitutionReader {
 				else {
 					word += words.length;
 				}
-				charbyte += currline.getBytes().length;
-				
-				//System.out.println(currline.split(" "));
 			}
 			
 			System.out.println(line + " " + word + " " + charbyte);
