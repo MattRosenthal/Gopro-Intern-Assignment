@@ -11,7 +11,6 @@ public class ConstitutionReader {
 		int word = 0; 
 		long charbyte = 0;
 		
-		int pline = 0;
 		int pword = 0;
 		long pcharbyte = 0;
 		
@@ -56,7 +55,7 @@ public class ConstitutionReader {
 			}
 			
 			System.out.println("all: " + line + " " + word + " " + charbyte);
-			System.out.println("proper: " + pword + " " + (charbyte - pcharbyte));
+			System.out.println("proper: " + line + " " + pword + " " + (charbyte - pcharbyte));
 			reader.close();
 			
 		}
