@@ -31,23 +31,32 @@ public class ConstitutionReader {
 			while ((currline = reader.readLine()) != null) {
 				line++;
 				String[] words = currline.split(" +");
+				
 				if (words.length == 1) {
 					if (!words[0].equals("")) {
 						word += words.length;
-						if (!ignore.contains(words[0])) pword++;
+						if (!ignore.contains(words[0])) {
+							pword++;
+							pcharbyte += words[0].length();
+						}
 					}
 				}
 				else {
 					word += words.length;
 					for (String tok : words) {
 						tok = tok.replaceAll("[^a-zA-Z]", "");
-						if (!ignore.contains(tok)) pword++;
+						if (!ignore.contains(tok)) {
+							pword++;
+						}
+						else {
+							pcharbyte += tok.length();
+						}
 					}
 				}
 			}
 			
 			System.out.println("all: " + line + " " + word + " " + charbyte);
-			System.out.println("proper: " + pword);
+			System.out.println("proper: " + pword + " " + (charbyte - pcharbyte));
 			reader.close();
 			
 		}
