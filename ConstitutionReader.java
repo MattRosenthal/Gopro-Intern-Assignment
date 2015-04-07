@@ -10,12 +10,20 @@ public class ConstitutionReader {
 		int charbyte = 0;
 		
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+			BufferedReader reader = new BufferedReader(new FileReader("constitution.txt"));
 			String currline = null;
 			while ((currline = reader.readLine()) != null) {
 				line++;
-				word += currline.split(" ").length;
+				String[] words = currline.split(" +");
+				if (words.length == 1) {
+					if (!words[0].equals("")) word += words.length;
+				}
+				else {
+					word += words.length;
+				}
 				charbyte += currline.getBytes().length;
+				
+				//System.out.println(currline.split(" "));
 			}
 			
 			System.out.println(line + " " + word + " " + charbyte);
