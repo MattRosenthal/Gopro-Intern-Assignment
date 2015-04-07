@@ -11,7 +11,7 @@ public class ConstitutionReader {
 		long charbyte = 0;
 		
 		try {
-			File file = new File("constitution.txt");
+			File file = new File(args[0]);
 			charbyte = file.length();
 			
 			BufferedReader reader = new BufferedReader(new FileReader(file));
