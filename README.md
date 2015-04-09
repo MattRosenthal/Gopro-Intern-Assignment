@@ -13,7 +13,8 @@ Output:
 	Lines 3 onward: Display total article count, total section count, and 
 	  breakdown of section count by article.
 
-Usage: javac ConstitutionReader.java
+Usage: 
+       javac ConstitutionReader.java
        java  ConstitutionReader constitution.txt
 
 This program fulfills the outlines set out by the Software Engineering Intern
