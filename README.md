@@ -3,11 +3,14 @@ Gopro-Intern-Assignment
 Input: Text document from the command line, in this case constitution.txt
 
 Output: 
+	
 	Line 1: equivalent to wc constitution.txt. Displays line, word, and byte
 	  count of input document.
+
 	Line 2: Modified wc to ignore words in list "I We You They a and the that 
 	  of for with". Displays line, word, and byte count of input document.
-	Lines 3 onward: Display total article count, total section count, and
+
+	Lines 3 onward: Display total article count, total section count, and 
 	  breakdown of section count by article.
 
 Usage: javac ConstitutionReader.java
