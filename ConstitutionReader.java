@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.TreeMap;
 
 public class ConstitutionReader {
 	
@@ -20,12 +21,18 @@ public class ConstitutionReader {
 			ignore.add(s);
 		}
 		
+		TreeMap<Integer, Integer> artsec = new TreeMap<Integer, Integer>();
+		
 		try {
 			File file = new File("constitution.txt");
 			charbyte = file.length();
 			
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String currline = null;
+			
+			int article = 0;
+			int section = 0;
+			int sectionTotal = 0;
 			
 			while ((currline = reader.readLine()) != null) {
 				line++;
@@ -42,6 +49,19 @@ public class ConstitutionReader {
 				}
 				else {
 					word += words.length;
+					
+					if (words[0].equals("Article") && words.length == 2) {
+						section = 0;
+						article++;
+						artsec.put(article, section);						
+					}
+					
+					if (words[0].equals("Section")) {
+						section++;
+						sectionTotal++;
+						artsec.put(article, section);
+					}
+					
 					for (String tok : words) {
 						tok = tok.replaceAll("[^a-zA-Z]", "");
 						if (!ignore.contains(tok)) {
@@ -56,6 +76,12 @@ public class ConstitutionReader {
 			
 			System.out.println("all: " + line + " " + word + " " + charbyte);
 			System.out.println("proper: " + line + " " + pword + " " + (charbyte - pcharbyte));
+			System.out.println("Total Articles: " + artsec.size());
+			System.out.println("Total Sections: " + sectionTotal);
+			System.out.println("Total Sections Per Article:");
+			for (int i = 1; i <= article; i++) {
+				System.out.println("	Article " + i + ": " + artsec.get(i));
+			}
 			reader.close();
 			
 		}
