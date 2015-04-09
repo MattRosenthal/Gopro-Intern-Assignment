@@ -11,7 +11,7 @@ Output:
 	  breakdown of section count by article.
 
 Usage: javac ConstitutionReader.java
-	   java  ConstitutionReader constitution.txt
+       java  ConstitutionReader constitution.txt
 
 This program fulfills the outlines set out by the Software Engineering Intern
 homework assignment. A few important things to point out:
